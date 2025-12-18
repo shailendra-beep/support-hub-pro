@@ -213,12 +213,12 @@ Please let me know if these steps resolve your issue, or if you need further ass
               <label className="block text-sm font-medium text-muted-foreground mb-1.5">
                 Assigned To
               </label>
-              <Select value={assignedAdmin} onValueChange={handleAssignmentChange}>
+              <Select value={assignedAdmin || 'unassigned'} onValueChange={(value) => handleAssignmentChange(value === 'unassigned' ? '' : value)}>
                 <SelectTrigger className="bg-background">
                   <SelectValue placeholder="Unassigned" />
                 </SelectTrigger>
                 <SelectContent className="bg-popover">
-                  <SelectItem value="">Unassigned</SelectItem>
+                  <SelectItem value="unassigned">Unassigned</SelectItem>
                   {mockAdmins.map((admin) => (
                     <SelectItem key={admin.id} value={admin.id}>
                       {admin.name}
